@@ -1,28 +1,90 @@
-body>*:not(aside,section),
-aside>*,
-section>*{
-    border: 1px solid black;
+*{
+     box-sizing: border-box;
+     /* text-align: center; */
 }
+
 body{
-    box-sizing: border-box;
+    margin: 20px auto;
     display: grid;
     width: 800px;
     height: 800px;
     grid-template-columns: 160px  160px 160px 160px 160px;
     grid-template-rows:  160px 160px 160px 160px 160px;
 }
+/* 管家 */
 header{
-    grid-column: 1/6;
+    
+    grid-column: 2/5;
     grid-row: 1/2;
+    
 }
+h1{ 
+    font: bold 200% Consolas, Monaco, monospace;
+    width: 31ch;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 0.1em solid ;
+    animation: word 3s steps(31, end),
+               cursor-blink 0.3s step-end infinite alternate;
+}
+@keyframes word {
+    from {width: 0;}
+}
+@keyframes cursor-blink {
+    50% {border-color: transparent; }
+}
+/* -------------------------------------------- */
 aside{
     grid-column: 1/2;
     grid-row: 2/5;
 }
+/* 日期區 */
 section{
+    text-align: center;
+    display: grid;
     grid-column: 2/6;
     grid-row: 2/5;
+    column-gap: 10px;
+    row-gap: 10px;
+    grid-template-columns: repeat( 7,calc(100% / 7));
+    grid-template-rows:  30px repeat( 6,calc(460px / 6));
 }
+.week{
+    font-size: 30px;
+    font-weight: bold;
+}
+section>*:not(.week),
+div>*
+{
+    grid-column: repeat(7,1/2);
+    grid-row: repeat(8,1/2);
+    --h: 50px;    /* the height */
+    --c:  #1095c1; /* the color*/
+    padding-top: 20px;
+    font-size: 30px;
+    font-style: italic;
+    font-weight: bold;
+    color: #0000;
+    text-shadow: 
+      0 calc(-1*var(--_t,0px)) #000, 
+      0 calc(var(--h) - var(--_t,0px)) var(--c);
+    border: 5px solid #000;
+    border-radius: 30px 10px;
+    overflow: hidden;
+    transition: .3s;
+  }
+  div:hover {
+    --_t: var(--h);
+    border-color: var(--c);
+  }
+  div:active {
+    background-color: var(--c);
+    border-color: var(--c);
+    border-radius: 100%;
+    color: #fff;
+    transition: 0s;
+  } 
+/* ----------------------------------------------- */
 footer{
     grid-column: 1/6;
     grid-row: 5/6;
