@@ -1,0 +1,29 @@
+body>*:not(aside,section),
+aside>*,
+section>*{
+    border: 1px solid black;
+}
+body{
+    box-sizing: border-box;
+    display: grid;
+    width: 800px;
+    height: 800px;
+    grid-template-columns: 160px  160px 160px 160px 160px;
+    grid-template-rows:  160px 160px 160px 160px 160px;
+}
+header{
+    grid-column: 1/6;
+    grid-row: 1/2;
+}
+aside{
+    grid-column: 1/2;
+    grid-row: 2/5;
+}
+section{
+    grid-column: 2/6;
+    grid-row: 2/5;
+}
+footer{
+    grid-column: 1/6;
+    grid-row: 5/6;
+}
