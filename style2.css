@@ -11,7 +11,7 @@ body{
     height: 800px;
     grid-template-columns: repeat(6,160px);
     grid-template-rows:  160px 160px 160px 160px 80px 80px;
-    background:url("./img/2920341.jpg") no-repeat;
+    /* background:url("./img/2920341.jpg") no-repeat; */
     background-size: 100% 120%; 
     
 }
@@ -63,6 +63,8 @@ div>*
 {
     grid-column: repeat(7,1/2);
     grid-row:  repeat(6,2/3);
+    width: 100%;
+    height: 100%;
     --h: 50px;    /* the height */
     --c:  #1095c1; /* the color*/
     padding-top: 20px;
@@ -77,6 +79,11 @@ div>*
     border-radius: 30px 10px;
     overflow: hidden;
     transition: 0.3s;
+    animation: open 1s forwards;
+  }
+  @keyframes open {
+      from{width: 0;}
+      to{width: 100%;}
   }
   div:hover {
     --_t: var(--h);

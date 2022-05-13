@@ -11,30 +11,68 @@
 
 <body>
     <header>
-       <h1> Hi master,This's your schedule.</h1>
+        <h1> Hi master,This's your schedule.</h1>
     </header>
-    <aside>
+    <?php
+    if (isset($_GET['month'])) {
+        $month = $_GET['month'];
+        $year = $_GET['year'];
+    } else {
+        $month = date('n');
+        $_GET['month']=0;
+        $year = date("Y");
+    }
     
+    switch ($_GET['month']) {
+        case 1:
+            $prevmonth = 12;
+            $prevyear = $year - 1;
+            $nextmonth = $month + 1;
+            $nextyear = $year;
+            break;
+        case 12:
+            $prevmonth = $month - 1;
+            $prevyear = $year;
+            $nextmonth = 1;
+            $nextyear = $year + 1;
+            break;
+
+        default:
+            $prevmonth = $month - 1;
+            $prevyear = $year;
+            $nextmonth = $month + 1;
+            $nextyear = $year;
+    }
+    // echo "顯示年月為" . $year ."年". $month."月";
+    ?>
+    <div>
+        <span><a href="month.php?year=<?=$prevyear ;?>&month=<?= $prevmonth ;?>"> 上個月</a></span>
+        <span><?= $year . "年" . $month . "月"; ?></span>
+        <span><a href="month.php?year=<?=$nextyear ;?>&month=<?= $nextmonth ;?>"> 下個月</a></span>
+    </div>
+    <aside>
+
     </aside>
     <section>
-            <div class="week">SUN</div>
-            <div class="week">MON</div>
-            <div class="week">TUE</div>
-            <div class="week">WED</div>
-            <div class="week">THU</div>
-            <div class="week">FRI</div>
-            <div class="week">SAT</div>
-        
+        <div class="week">SUN</div>
+        <div class="week">MON</div>
+        <div class="week">TUE</div>
+        <div class="week">WED</div>
+        <div class="week">THU</div>
+        <div class="week">FRI</div>
+        <div class="week">SAT</div>
+
         <?php
-        $month = 6; //以幾月為標準
-        $firstday = date("Y-") . $month . "-1"; //這個標準月的第一天
+        $month=$_GET['month'];
         $today = date("Y-m-d"); //今天(日期)
+        $firstday = $year ."-". $month . "-1"; //這個標準月的第一天 
         $totalday = date("t", strtotime($firstday)); //這個標準月有幾天(值)
         $weekday = date("w", strtotime($today)); //今天星期幾(值)
         $firstweek = date("w", strtotime($firstday)); //這個月第一天星期幾(值)
-        $lastday = date("Y-") . $month . "-" . $totalday; //標準月的最後一天
+        $lastday = $year ."-". $month . "-" . $totalday; //標準月的最後一天
         $lastweek = date("w", strtotime($lastday)); //最後一天星期幾(值)
-        $lastmonthday = date("w",strtotime("-1 days",strtotime($firstday)));
+        $lastmonthday = date("w", strtotime("-1 days", strtotime($firstday)));
+        // echo $firstday;
         // echo $lastday;
         // echo $lastweek;
         // echo $lastmonthday;
@@ -67,12 +105,12 @@
                 $dayFormat = "";
             }
             if (!empty($dayFormat)) {
-                echo "<div class="."day$key".">{$dayFormat}</div>";
+                echo "<div class=" . "day$key" . ">{$dayFormat}</div>";
             } else {
-                echo "<div class="."noday".">{$dayFormat}</div>";
+                echo "<div class=" . "noday" . ">{$dayFormat}</div>";
             }
-            
-            
+
+
             // if ($key % 7 == 6) {
             //     echo "</div>";
             // }
@@ -80,7 +118,7 @@
         ?>
     </section>
     <footer>
-        
+
     </footer>
 </body>
 
