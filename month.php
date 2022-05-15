@@ -23,7 +23,7 @@
         $year = date("Y");
     }
     
-    switch ($_GET['month']) {
+    switch ($month) {
         case 1:
             $prevmonth = 12;
             $prevyear = $year - 1;
