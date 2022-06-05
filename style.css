@@ -1,0 +1,170 @@
+*{
+     box-sizing: border-box;
+     /* text-align: center; */
+    
+}
+
+body{
+    margin: 20px auto;
+    display: grid;
+    width: 1040px;
+    height: 800px;
+    grid-template-columns: 80px 80px repeat(5,160px) 80px ;
+    grid-template-rows:  80px 80px 160px 160px 160px 80px 80px;
+    /* background:url("./img/2920341.jpg") no-repeat; */
+    background-size: 100% 120%; 
+    
+}
+
+
+header{
+    grid-column: 3/8;
+    grid-row: 1/2;
+    border-radius: 10px;
+    overflow: hidden;
+    background:  #879AF0;
+    border-top: 1px solid lightblue;
+    animation: expand 1s forwards;
+}
+
+@keyframes expand {
+    0%{width: 0;height: 0;}
+    50%{width: 100%;height: 0;}
+    100%{width: 100%;height: 100%;}
+}
+
+/* 管家 */
+h1{ 
+    font: bold 200% DejaVu Sans Mono, monospace;
+    width: 31ch;
+    color: rgb(252, 252, 252);
+    white-space: nowrap;
+    padding: 5px;
+    overflow: hidden;
+    border-right: 2px solid ;
+    animation: word 3s steps(31, end),
+               cursor-blink 0.3s step-end infinite alternate;
+    animation-delay: .4s;
+}
+@keyframes word {
+    from {width: 0;}
+}
+@keyframes cursor-blink {
+    50% {border-color: transparent; }
+}
+/* 日期按鈕 */
+.last{
+    grid-column: 2/3;
+    grid-row: 2/3;
+    text-align: end;
+    
+}
+.tittle{
+    text-align: center;
+    grid-column: 3/8;
+    grid-row: 2/3;
+}
+.next{
+    grid-column: 8/9;
+    grid-row: 2/3;
+}
+/* -------------------------------------------- */
+aside{
+    grid-column: 1/2;
+    grid-row: 2/6;
+}
+/* 日期區 */
+section{
+    text-align: center;
+    display: grid;
+    grid-column: 3/8;
+    grid-row: 3/7;
+    column-gap: 5px;
+    row-gap: 10px;
+    overflow: hidden;
+    grid-template-columns: repeat( 7,calc(770px / 7));
+    grid-template-rows:  30px repeat( 6,calc(460px / 6));
+}
+.week{
+    font-size: 30px;
+    font-weight: bold;
+}
+.weekend{
+    font-size: 30px;
+    font-weight: bold;
+    color: red;
+}
+section>*:not(.week,.weekend,.no,.weekends),
+.weekday>*
+{
+    grid-column: repeat(5,2/3);
+    grid-row:  repeat(6,2/3);
+    width: 100%;
+    height: 100%;   
+    white-space: nowrap;
+    --c:  #879AF0; /* the color*/
+    line-height:22px;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: bold;
+    color: #000;  
+    border: 5px solid #000;
+    border-radius: 30px 10px;
+    overflow: hidden;
+    transition: 0.3s;
+    animation: open 1s forwards;
+  }
+  @keyframes open {
+      from{width: 0;}
+      to{width: 100%;}
+  }
+  .weekday:hover {
+    border-color: var(--c);
+    color:var(--c);
+  }
+  .weekday:active {
+    background-color: var(--c);
+    border-color: var(--c);
+    border-radius: 100%;
+    color: #fff;
+    transition: 0s;
+  } 
+
+.weekends{
+    grid-column:1/2 7/8;
+    grid-row:  repeat(6,2/3);
+    width: 100%;
+    height: 100%;   
+    white-space: nowrap;
+    --c:  #879AF0;
+    line-height:22px;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: bold;
+    color:red;  
+    border: 5px solid red;
+    border-radius: 30px 10px;
+    overflow: hidden;
+    transition: 0.3s;
+    animation: open 1s forwards;
+  }
+  @keyframes open {
+      from{width: 0;}
+      to{width: 100%;}
+  }
+  .weekends:hover {
+    border-color: var(--c);
+    color:var(--c);
+  }
+  .weekends:active {
+    background-color: var(--c);
+    border-color: var(--c);
+    border-radius: 100%;
+    color: #fff;
+    transition: 0s;
+  } 
+/* ----------------------------------------------- */
+footer{
+    grid-column: 1/9;
+    grid-row: 6/8;
+}
