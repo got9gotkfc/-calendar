@@ -21,7 +21,7 @@
         $year = $_GET['year'];
     } else {
         $month = date('n');
-        $_GET['month'] = 0;
+        $_GET['month'] = date('m');
         $year = date("Y");
     }
 
