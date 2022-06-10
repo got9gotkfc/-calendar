@@ -48,9 +48,9 @@
     // echo "顯示年月為" . $year ."年". $month."月";
     ?>
 
-    <span class="last"><a href="month.php?year=<?= $prevyear; ?>&month=<?= $prevmonth; ?>"> 上個月</a></span>
+    <span class="last"><a href="index.php?year=<?= $prevyear; ?>&month=<?= $prevmonth; ?>"> 上個月</a></span>
     <span class="tittle"><?= $year . "-" . $month; ?></span>
-    <span class="next"><a href="month.php?year=<?= $nextyear; ?>&month=<?= $nextmonth; ?>"> 下個月</a></span>
+    <span class="next"><a href="index.php?year=<?= $nextyear; ?>&month=<?= $nextmonth; ?>"> 下個月</a></span>
 
     <aside>
 
